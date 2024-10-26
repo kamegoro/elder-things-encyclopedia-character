@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class SystemResource {
-   @RequestMapping(value = "/systems/ping", method = RequestMethod.GET)
+   @RequestMapping(value = "/v1/systems/ping", method = RequestMethod.GET)
    public String ping() {
        return "pong";
    }
