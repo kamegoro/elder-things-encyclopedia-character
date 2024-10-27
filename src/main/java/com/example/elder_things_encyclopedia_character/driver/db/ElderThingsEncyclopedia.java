@@ -34,11 +34,7 @@ public class ElderThingsEncyclopedia {
                 String title = result.getString("title");
                 String profile = result.getString("profile");
 
-                CharacterJson characterJson = new CharacterJson();
-                characterJson.setId(id);
-                characterJson.setTitle(title);
-                characterJson.setProfile(profile);
-
+                CharacterJson characterJson = new CharacterJson(id, title, profile);
                 characters.add(characterJson);
             }
 

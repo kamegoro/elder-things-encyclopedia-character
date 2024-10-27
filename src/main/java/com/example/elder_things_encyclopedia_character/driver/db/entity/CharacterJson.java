@@ -9,4 +9,10 @@ public class CharacterJson {
     private UUID id;
     private String title;
     private String profile;
+
+    public CharacterJson(UUID id, String title, String profile) {
+        this.id = id;
+        this.title = title;
+        this.profile = profile;
+    }
 }
