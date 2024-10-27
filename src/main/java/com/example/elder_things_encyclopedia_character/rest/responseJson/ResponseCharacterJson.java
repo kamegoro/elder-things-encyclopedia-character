@@ -7,4 +7,10 @@ public class ResponseCharacterJson {
     private String id;
     private String title;
     private String profile;
+
+    public ResponseCharacterJson(String id, String title, String profile) {
+        this.id = id;
+        this.title = title;
+        this.profile = profile;
+    }
 }

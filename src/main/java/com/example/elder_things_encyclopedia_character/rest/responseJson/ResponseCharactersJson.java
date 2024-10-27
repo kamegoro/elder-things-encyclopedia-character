@@ -7,4 +7,8 @@ import java.util.List;
 @Data
 public class ResponseCharactersJson {
     private List<ResponseCharacterJson> characters;
+
+    public ResponseCharactersJson(List<ResponseCharacterJson> characters) {
+        this.characters = characters;
+    }
 }

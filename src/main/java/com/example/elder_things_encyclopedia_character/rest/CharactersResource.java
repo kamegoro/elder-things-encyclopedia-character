@@ -22,7 +22,6 @@ public class CharactersResource {
     @RequestMapping(value = "/v1/characters", method = RequestMethod.GET)
     public ResponseEntity<ResponseCharactersJson> getCharacters() {
         ElderThingsEncyclopediaDataSourceConfig dataSourceConfig = new ElderThingsEncyclopediaDataSourceConfig();
-        ResponseCharactersJson responseCharactersJson = new ResponseCharactersJson();
 
         try (Connection connection = dataSourceConfig.connect()) {
             ElderThingsEncyclopedia elderThingsEncyclopediaDriver = new ElderThingsEncyclopedia(connection);
@@ -34,14 +33,16 @@ public class CharactersResource {
             List<ResponseCharacterJson> responseCharacterList = new ArrayList<>();
 
             for (Character character : characters) {
-                ResponseCharacterJson characterResponseJson = new ResponseCharacterJson();
-                characterResponseJson.setId(character.getId().toString());
-                characterResponseJson.setTitle(character.getName());
-                characterResponseJson.setProfile(character.getProfile());
+                ResponseCharacterJson characterResponseJson = new ResponseCharacterJson(
+                        character.getId().toString(),
+                        character.getName(),
+                        character.getProfile()
+                );
+
                 responseCharacterList.add(characterResponseJson);
             }
 
-            responseCharactersJson.setCharacters(responseCharacterList);
+            ResponseCharactersJson responseCharactersJson = new ResponseCharactersJson(responseCharacterList);
 
             return ResponseEntity.ok(responseCharactersJson);
         } catch (Exception e) {
